@@ -4,7 +4,7 @@ import './Layout.scss';
 
 const Layout = () => {
   return (
-    <div className="container">
+    <div className="wrapper">
       <Sidebar />
       <Outlet />
     </div>

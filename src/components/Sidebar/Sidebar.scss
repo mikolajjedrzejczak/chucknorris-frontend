@@ -25,10 +25,13 @@
     }
 
     .menu {
+        width: 100%;
+        height: 50%;
+        padding: 0 20px;
         display: flex;
         flex-direction: column;
         gap: 40px;
-        width: 100%;
+
         a {
             font-family: Josefin Slab;
             font-size: 24px;
@@ -43,12 +46,26 @@
         }
     }
 
-    span {
+    .logout {
+        width: 100%;
+        padding: 0 20px;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: 600;
+        color: $secondary;
+        text-align: left;
+        margin: auto 0;
+    }
+
+    .footer {
         position: absolute;
         bottom: 0;
         padding: 20px;
         color: $secondary;
         margin: auto 0;
         width: 100%;
+        font-family: Josefin Slab;
+        font-size: 12px;
+        text-align: center
     }
 }

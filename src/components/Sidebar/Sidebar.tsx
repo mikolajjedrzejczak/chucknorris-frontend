@@ -26,7 +26,8 @@ const Sidebar = () => {
           ADD JOKE
         </NavLink>
       </div>
-      <span>LOG OUT</span>
+      <span className="logout">LOG OUT</span>
+      <span className="footer">made with Chuck by Chuck - 2024</span>
     </div>
   );
 };
