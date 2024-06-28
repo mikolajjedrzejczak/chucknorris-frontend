@@ -3,9 +3,10 @@ import Logo from '../../components/Icons/Logo';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Signin = () => {
-  const [isDisable, setIsDisable] = useState(true);
+  const [isDisable, setIsDisable] = useState(false);
   return (
     <div className="signin">
       <div className="container">
@@ -21,6 +22,7 @@ const Signin = () => {
             InputLabelProps={{
               shrink: true,
             }}
+            
           />
           <TextField
             error={isDisable}
@@ -36,7 +38,7 @@ const Signin = () => {
             LOG IN
           </Button>
           <p>
-            Don't have an account? <span>Sign up here</span>
+            Don't have an account? <span><Link to="/signup">Sign up here</Link></span>
           </p>
         </div>
 

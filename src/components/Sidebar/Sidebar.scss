@@ -1,0 +1,54 @@
+@import "../../colors";
+
+.sidebar {
+    position: relative;
+    width: 260px;
+    height: 623px;
+    background-color: $gray;
+    width: 260px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 15px;
+
+    .logo {
+        width: 75.84px;
+        height: 64px;
+        top: 215px;
+        left: 292px;
+        padding: 0px 16px 0px 16px;
+        gap: 16px;
+        opacity: 0px;
+        fill: $secondary!important;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+        a {
+            font-family: Josefin Slab;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 24px;
+            color: $secondary;
+            text-decoration: none;
+        }
+
+        .active {
+            text-decoration: underline;
+        }
+    }
+
+    span {
+        position: absolute;
+        bottom: 0;
+        padding: 20px;
+        color: $secondary;
+        margin: auto 0;
+        width: 100%;
+    }
+}

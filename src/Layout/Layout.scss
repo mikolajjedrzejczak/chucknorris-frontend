@@ -1,0 +1,11 @@
+@import "../colors";
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: $background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
