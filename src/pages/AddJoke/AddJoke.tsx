@@ -24,7 +24,6 @@ const AddJoke = () => {
             label="Joke"
             variant="outlined"
             defaultValue="No statement can catch the ChuckNorrisException."
-            size="700px"
             InputLabelProps={{
               shrink: true,
             }}

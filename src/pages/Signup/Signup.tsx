@@ -2,19 +2,47 @@ import './Signup.scss';
 import Logo from '../../components/Icons/Logo';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FormEvent, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Signup = () => {
-  const [isDisable, setIsDisable] = useState(true);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [error, setError] = useState<string>('');
+
+  const inputs = { email, password };
+
+  const handleSignUp = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      await axios.post('http://127.0.0.1:3000/auth/signup', inputs);
+      navigate('/signin?success=true');
+    } catch (err: any) {
+      setError(err.response);
+    }
+  };
+
+  useEffect(() => {
+    if (email.length == 0 || password.length == 0) {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  }, [email, password]);
+
+  console.log(error);
   return (
     <div className="signup">
       <div className="container">
         <Logo className="logo" />
-        <div className="form">
+        <form onSubmit={handleSignUp} className="form">
           <h1 className="title">Explore 'Chuck Jokes' with us!</h1>
           <TextField
-            error={isDisable}
+            error={isDisabled}
             className="text-input"
             type="email"
             label="E-mail"
@@ -22,9 +50,10 @@ const Signup = () => {
             InputLabelProps={{
               shrink: true,
             }}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
-            error={isDisable}
+            error={isDisabled}
             className="text-input"
             type="password"
             label="Password"
@@ -32,8 +61,14 @@ const Signup = () => {
             InputLabelProps={{
               shrink: true,
             }}
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <Button disabled={isDisable} className="button" variant="contained">
+          <Button
+            type="submit"
+            disabled={isDisabled}
+            className="button"
+            variant="contained"
+          >
             CREATE ACCOUNT
           </Button>
           <p>
@@ -42,8 +77,7 @@ const Signup = () => {
               <Link to="/signin">Log in here</Link>
             </span>
           </p>
-        </div>
-
+        </form>
         <p className="quote">
           “Chuck Norris can login without signing up, on any website.”
         </p>

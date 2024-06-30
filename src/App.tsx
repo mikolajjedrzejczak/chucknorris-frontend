@@ -11,9 +11,11 @@ import AddJoke from './pages/AddJoke/AddJoke';
 import MyJokes from './pages/MyJokes/MyJokes';
 import Signup from './pages/Signup/Signup';
 import Layout from './Layout/Layout';
+import { useAuth } from './context/Auth/AuthContext';
 
 const App = () => {
-  const user = true;
+  const { user } = useAuth();
+  console.log(user);
   const router = createBrowserRouter([
     {
       path: '/',
