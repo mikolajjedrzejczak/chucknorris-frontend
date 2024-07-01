@@ -19,7 +19,7 @@ const Signin = () => {
   const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://127.0.0.1:3000/auth/signin', inputs);
+      const res = await axios.post('https://chucknorris-backend.onrender.com/auth/signin', inputs);
 
       if (res.data.status === parseInt('401')) {
         console.log(res.data.response);

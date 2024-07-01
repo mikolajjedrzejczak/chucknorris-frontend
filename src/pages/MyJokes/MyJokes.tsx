@@ -11,7 +11,7 @@ const MyJokes = () => {
   useEffect(() => {
     const getJokes = async () => {
       try {
-        const res = await axios.get('http://127.0.0.1:3000/joke/my-jokes');
+        const res = await axios.get('https://chucknorris-backend.onrender.com/joke/my-jokes');
         setMyJokes(res.data);
       } catch (err: any) {
         console.log(err.response);
@@ -24,7 +24,7 @@ const MyJokes = () => {
     try {
       const newJokes = myJokes.filter((j: string) => j !== joke);
       setMyJokes(newJokes);
-      await axios.post('http://127.0.0.1:3000/joke/delete', joke);
+      await axios.post('https://chucknorris-backend.onrender.com/joke/delete', joke);
     } catch (err: any) {
       console.log(err.response);
     }

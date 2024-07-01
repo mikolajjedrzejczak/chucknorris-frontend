@@ -12,14 +12,16 @@ const Signup = () => {
   const [password, setPassword] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState(false);
 
-
   const inputs = { email, password };
 
   const handleSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      await axios.post('http://127.0.0.1:3000/auth/signup', inputs);
+      await axios.post(
+        'https://chucknorris-backend.onrender.com/auth/signup',
+        inputs
+      );
       navigate('/signin?success=true');
     } catch (err: any) {
       console.log(err.response);
