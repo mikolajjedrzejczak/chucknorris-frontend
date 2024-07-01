@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './AddJoke.scss';
 
 const AddJoke = () => {
-  const [joke, setJoke] = useState('');
+  const [,setJoke] = useState('');
 
   const handleAddJoke = async () => {};
 

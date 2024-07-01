@@ -3,7 +3,7 @@ import Logo from '../../components/Icons/Logo';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { FormEvent, useEffect, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/Auth/AuthContext';
 import axios from 'axios';
 
