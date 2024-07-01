@@ -5,33 +5,28 @@ import './AddJoke.scss';
 const AddJoke = () => {
   const [joke, setJoke] = useState('');
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setJoke(event.target.value);
-  };
+  const handleAddJoke = async () => {};
 
-  const handleSubmit = () => {
-    console.log('Joke submitted:', joke);
-    // Add your submit logic here
-  };
   return (
     <div className="add-joke">
       <div className="container">
         <h1 className="title">Add joke</h1>
-        <form className="form" noValidate autoComplete="off">
+        <form onSubmit={handleAddJoke} className="form">
           <TextField
-            id="joke-input"
-            className="joke-input"
             label="Joke"
             variant="outlined"
+            fullWidth
+            multiline
+            rows={5}
             defaultValue="No statement can catch the ChuckNorrisException."
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={joke}
-            onChange={handleInputChange}
-            margin="normal"
+            sx={{ maxWidth: 433, margin: 'auto', mt: 2 }}
+            onChange={(e) => setJoke(e.target.value)}
           />
-          <Button variant="contained" className="button" onClick={handleSubmit}>
+          <Button
+            type="submit"
+            variant="contained"
+            className="button"
+          >
             ADD JOKE
           </Button>
         </form>

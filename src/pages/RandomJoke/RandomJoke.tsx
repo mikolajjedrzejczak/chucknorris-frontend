@@ -10,8 +10,10 @@ import {
 import './RandomJoke.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useAuth } from '../../context/Auth/AuthContext';
 
 const RandomJoke = () => {
+  const { user } = useAuth();
   const [categories, setCategories] = useState<string[]>([]);
   const [category, setCategory] = useState<string>('None');
   const [joke, setJoke] = useState<string>('');
@@ -60,6 +62,21 @@ const RandomJoke = () => {
 
   const handleDrawJoke = () => {
     setDrawJoke((prevState) => !prevState);
+  };
+
+  const handleSaveJoke = async () => {
+    try {
+      const res = await axios.post('http://127.0.0.1:3000/joke/save', {
+        joke: joke,
+        email: user?.email,
+      });
+
+      if (res.data.newJoke.status === parseInt('409')) {
+        console.log(res.data.newJoke.response);
+      }
+    } catch (err: any) {
+      console.log(err.response);
+    }
   };
 
   return (
@@ -111,7 +128,11 @@ const RandomJoke = () => {
               DRAW A RANDOM{' '}
               {impersatonate !== '' ? impersatonate : 'CHUCK NORRIS'} JOKE
             </Button>
-            <Button className="save-btn" variant="contained">
+            <Button
+              className="save-btn"
+              variant="contained"
+              onClick={handleSaveJoke}
+            >
               SAVE THIS JOKE
             </Button>
           </div>
