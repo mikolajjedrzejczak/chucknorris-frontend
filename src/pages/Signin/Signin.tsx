@@ -12,7 +12,6 @@ const Signin = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState(!email || !password);
-  const [error, setError] = useState<string>('');
   const { setUser } = useAuth();
 
   const inputs = { email, password };
@@ -22,12 +21,17 @@ const Signin = () => {
     try {
       const res = await axios.post('http://127.0.0.1:3000/auth/signin', inputs);
 
-      setTimeout(() => {
-        setUser(res.data.user);
-        navigate('/');
-      }, 250);
+      if (res.data.status === parseInt('401')) {
+        console.log(res.data.response);
+        return;
+      } else {
+        setTimeout(() => {
+          setUser(res.data.user);
+          navigate('/');
+        }, 250);
+      }
     } catch (err: any) {
-      setError(err.response);
+      console.log(err.response);
     }
   };
 
@@ -38,8 +42,6 @@ const Signin = () => {
       setIsDisabled(false);
     }
   }, [email, password]);
-
-  console.log(error);
 
   return (
     <div className="signin">

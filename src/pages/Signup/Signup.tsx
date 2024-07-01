@@ -11,7 +11,7 @@ const Signup = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState(false);
-  const [error, setError] = useState<string>('');
+
 
   const inputs = { email, password };
 
@@ -22,7 +22,7 @@ const Signup = () => {
       await axios.post('http://127.0.0.1:3000/auth/signup', inputs);
       navigate('/signin?success=true');
     } catch (err: any) {
-      setError(err.response);
+      console.log(err.response);
     }
   };
 
@@ -34,7 +34,6 @@ const Signup = () => {
     }
   }, [email, password]);
 
-  console.log(error);
   return (
     <div className="signup">
       <div className="container">
